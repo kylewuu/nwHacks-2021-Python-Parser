@@ -6,7 +6,7 @@ from nltk.tokenize import word_tokenize, sent_tokenize
 
 
 
-# Text which will be inputted by the user and summarized
+# Text which will be inputted by the user to be summarized
 input_text = """" """"
 
 
