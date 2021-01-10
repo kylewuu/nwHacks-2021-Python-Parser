@@ -1,18 +1,10 @@
-#!/usr/bin/env python
-import sys
-import spacy
-import pattern.text.en
-from pass2act import pass2act
+from textDetection import *
 
-def inputFunction(inputText):
 
-    nlp = spacy.load('en')
-    prev = ''
-    acts = ''
+def main():
+    extractedText = extractText()
+    print(extractedText)
 
-    s=inputText.strip()
 
-    prev = s
-    acts = pass2act(s)
-    
-    return acts
+if __name__ == "__main__":
+    main()
