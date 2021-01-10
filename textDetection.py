@@ -5,7 +5,7 @@ from google.cloud import vision
 
 
 def extractText(filePath):
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:\englishDesktop\Coding\\nwHacks2021\keys\\nwHacks-ee0c4c9fc376.json"
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = PATH_OF_KEY
 
     # Instantiates a client
     client = vision.ImageAnnotatorClient()
