@@ -1,5 +1,8 @@
 from textDetection import *
 from classes.Question import Question
+from input import inputFunction
+from summarizer import summarizerFunction
+from questGenOutput import questGenFunction
 
 
 def main():
@@ -9,18 +12,25 @@ def main():
         'res/science_textbook_image_cropped_edited.jpg')
     print(extractedText)
 
-    # summarize text
-    # summarizedText = FUNCTION OF SUMMARIZE TEXT, MAKE IT RETURN ONE LONG STRING (paragraph form)
 
-    # make into passive text
-    # activeVoiceText = FUNCTION OF CONVERTING TO ACTIVE VOICE, should return another long string (paragraph form)
+    inputText = ""
+    summarizedText= ""
+    sentence = ''
+    outputText= ""
 
-    # make array of questions
-    # questions
+    inputText = extractedText
 
-    # def __init__(self, question_type, question, correct_answer, all_answers=[]):
-    # example of how to set an object
-    questions = output["questions"]
+    #Call summarizerFunction from summarizer.py to summarize the inputText
+    summarizedText = summarizerFunction(inputText)
+
+    #Call inputFunction from input.py > pass2act.py to convert passive sentence into active sentences.
+    outputText = inputFunction(inputText)   
+    print(outputText)
+
+    parsedOutput = questGenFunction(outputText)
+    print(parsedOutput)
+
+    questions = parsedOutput["questions"]
     questionsReturn = []
     questions[0] = {'question_statement': 'Who is the main actor in the film?', 'question_type': 'MCQ', 'answer': 'vijay', 'id': 1, 'options': ['Kohli', 'Dhoni', 'Milne'], 'options_algorithm': 'sense2vec', 'extra_options': ['Steyn', 'Sanga', 'Mccullum', 'Haddin'],
                     'context': 'The film stars Vijay and Vijay Sethupathi, with Malavika Mohanan, Arjun Das, Andrea Jeremiah and Shanthanu Bhagyaraj in supporting roles. The film stars Vijay and Vijay Sethupathi, with Malavika Mohanan, Arjun Das, Andrea Jeremiah and Shanthanu Bhagyaraj in supporting roles.'}
