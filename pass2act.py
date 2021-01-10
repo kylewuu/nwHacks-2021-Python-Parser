@@ -62,9 +62,7 @@ def pass2act(doc, rec=False):
                 elif word.tag_ == 'VBN':
                     verbtense = en.PAST
                 else:
-                    
-                    print("here")
-                    
+                    verbtense = en.tenses(word.text)[0][0]
             if word.dep_ == 'prt':
                 if word.head.dep_ == 'ROOT':
                     part = ''.join(w.text_with_ws.lower() if w.tag_ not in ('NNP','NNPS') else w.text_with_ws for w in word.subtree).strip()
@@ -137,11 +135,11 @@ def pass2act(doc, rec=False):
             else:
                 auxstr += a.text_with_ws
         auxstr = auxstr.lower().strip()
-
+ 
         if verbaspect:
             verb = en.conjugate(verb,tense=verbtense,aspect=verbaspect)
         else:
-            print("here1")
+            verb = en.conjugate(verb)
 
         advcl = ''
         if advcltree:
